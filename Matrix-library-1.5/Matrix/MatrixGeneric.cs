@@ -32,7 +32,11 @@ namespace Matrix
                             }
                         case 2: // complex
                             {
-                                
+                                Regex regex = new Regex(@"^(-?\d+(/+|-)(/i\d+|\d+/i)|-?(/i\d+|\d+/i)(/+|-)\d+|-?(\d+|(/i\d+|\d+/i)))$");
+                                if (!regex.IsMatch(Marray[i,j]))
+                                {
+                                    throw new IncorrectInputException("Некорректный тип данных!");
+                                }
                                 break;
                             }
                         case 3: // matrix
@@ -41,15 +45,12 @@ namespace Matrix
                             }
                         case 4: // double
                             {
-                                try
-                                {
-                                    Convert.ToDouble(Marray[i, j]);
-                                }
-                                catch (IncorrectInputException)
+                                Regex regex = new Regex(@"^-?\d+$");
+                                if (!regex.IsMatch(Marray[i, j]))
                                 {
                                     throw new IncorrectInputException("Некорректный тип данных!");
                                 }
-                                break;
+                                break;                                
                             }
                         default:
                             {
