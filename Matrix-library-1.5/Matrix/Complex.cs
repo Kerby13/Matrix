@@ -82,5 +82,20 @@ namespace Matrix
         {
             return string.Format("{0} + i{1}", this.real, this.imaginary);
         }
+
+        public static Complex Converter(string str)
+        {
+            Complex number = new Complex();
+            string[] array = str.Split('+');
+            for (int i=0; i < 2; i++)
+            {
+                if (array[i].Contains("i"))
+                {
+                    number.imaginary = Convert.ToDouble(array[i]);
+                }
+                else number.real = Convert.ToDouble(array[i]);
+            }
+            return        
+        }
     }
 }

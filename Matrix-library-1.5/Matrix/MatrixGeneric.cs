@@ -13,6 +13,53 @@ namespace Matrix
         private T[,] _matrix;
         private IMathCalculator<T> _mathCalculator;
 
+        public MatrixGeneric<T> Check(string[] array, int row, int column, int type)
+        {
+            string[] tmparray = new string[column];
+            string[,] Marray = new string[row,column];
+            for (int i = 0; i < row; i++)
+            {
+                tmparray = array[i].Split(' ');
+                for (int j = 0; j < column; j++)
+                {
+                    Marray[i,j] = tmparray[j];
+                    switch (type)
+                    {
+                        case 1: //string
+                            {
+                                break;
+                            }
+                        case 2: // complex
+                            {
+                                
+                                break;
+                            }
+                        case 3: // matrix
+                            {
+                                break;
+                            }
+                        case 4: // double
+                            {
+                                try
+                                {
+                                    Convert.ToDouble(Marray[i, j]);
+                                }
+                                catch (IncorrectInputException)
+                                {
+                                    throw new IncorrectInputException("Некорректный тип данных!");
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                throw new IncorrectInputException("Некорректный тип данных!");
+                            }
+                            
+                    }
+                }                   
+            }            
+        }
+
         public MatrixGeneric(T[,] array, IMathCalculator<T> mathCalculator)
         {
             Matrix = array;
