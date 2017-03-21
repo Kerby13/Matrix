@@ -14,7 +14,7 @@ namespace Matrix
         private T[,] _matrix;
         private IMathCalculator<T> _mathCalculator;
 
-        public MatrixGeneric<T> Check(string[] array, int row, int column, int type)
+        public static bool Check(string[] array, int row, int column, int type)
         {
             string[] tmparray = new string[column];
             string[,] Marray = new string[row,column];
@@ -59,7 +59,8 @@ namespace Matrix
                             
                     }
                 }                   
-            }            
+            }
+            return true;
         }
 
         public MatrixGeneric(T[,] array, IMathCalculator<T> mathCalculator)
